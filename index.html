@@ -9,7 +9,7 @@
 		<h1>Pick a DHV for me</h1>
 		<div>Answer these questions then click "submit" to see a list of recommended DHVs</div>
 		<form id="infoForm">
-			<label for="amount-consumed">How much herb do you currently consume?</label><br>
+			<label for="amount_consumed">How much herb do you personally consume? (if you consume with others, enter the per-person consumption)</label><br>
 			<select size="4">
 				<option value="none">None</option>
 				<option value="occassional">Occasional use (up to 0.1 g per day)</option>
@@ -46,27 +46,35 @@
 
 			<label for="butane">Are you willing and able to use a butane torch?</label><br>
 			<select size="2">
-				<option value="butane-yes">Yes</option>
-				<option value="butane-no">No</option>
+				<option value="yes">Yes</option>
+				<option value="no">No</option>
 			</select><br>
 
 
 			<label for="budget">What is the most you're willing to spend (USD)?</label><br>
 			<select size="7">
-				<option value="price-100">$100</option>
-				<option value="price-150">$150</option>
-				<option value="price-200">$200</option>
-				<option value="price-300">$300</option>
-				<option value="price-400">$400</option>
-				<option value="price-500">$500</option>
-				<option value="price-1000">$1000</option>
+				<option value="100">$100</option>
+				<option value="150">$150</option>
+				<option value="200">$200</option>
+				<option value="300">$300</option>
+				<option value="400">$400</option>
+				<option value="500">$500</option>
+				<option value="1000">$1000</option>
 			</select><br>
 
-			<label for="water-pipe">Do you want to consume through a water pipe?</label><br>
+			<label for="glass">Do you want to consume through a water pipe or other glass?</label><br>
 			<select size="3">
-				<option value="pipe-always">Always</option>
-				<option value="pipe-sometimes">Sometimes</option>
-				<option value="price-200">Never or don't care</option>
+				<option value="always">Always</option>
+				<option value="sometimes">Sometimes</option>
+				<option value="never_dont_care">Never or don't care</option>
+			</select><br>
+
+			<label for="heating">Do you prefer conduction or convection heating?</label><br>
+			<select size="4">
+				<option value="conduction">conduction</option>
+				<option value="convection">convection</option>
+				<option value="hybrid">hybrid</option>
+				<option value="dont_care">Don't know or don't care</option>
 			</select><br>
 
 			<input type="submit" value="Submit">
