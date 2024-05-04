@@ -5,7 +5,7 @@ const heating_types = ["convection", "conduction", "hybrid"];
 const zero_five_scale = [0,1,2,3,4,5];
 
 class Device {
-    constructor(name, bowl_size, form_factor, stealth, has_session, has_on_demand, heat_source, price, glass_friendliness, glass_free_friendliness, heating, url) {
+    constructor(name, bowl_size, form_factor, stealth, has_session, has_on_demand, heat_source, price, glass_friendliness, glass_free_friendliness, heating, url, bowls_per_charge) {
         this.name = name;
 
         // In grams
@@ -45,6 +45,9 @@ class Device {
 
         console.assert(typeof(url) === "string", "Error: Invalid url");
         this.url = url;
+
+        console.assert(typeof(bowls_per_charge) === "number" && bowls_per_charge > 0, "Error: Invalid bowls_per_charge");
+        this.bowls_per_charge = bowls_per_charge;
     }
 
     convection_fraction() {
@@ -60,7 +63,11 @@ class Device {
 }
 
 const devices = [
-    new Device("Dynavap B", 0.05, "portable", 1, true, true, "butane/induction", 39, 4, 5, "hybrid", "https://www.dynavap.com/products/the-b"),
+    new Device("Dynavap B", 0.05, "portable", 1, true, true, "butane/induction", 39, 4, 5, "hybrid", "https://www.dynavap.com/products/the-b", 10),
+    new Device("Dynavap M7", 0.1, "portable", 1, true, true, "butane/induction", 75, 4, 5, "hybrid", "https://www.dynavap.com/products/the-b", 10),
+    new Device("Dynavap M7 XL", 0.1, "portable", 1, true, true, "butane/induction", 100, 4, 5, "hybrid", "https://www.dynavap.com/products/the-b", 10),
+    new Device("Crafty+", 0.3, "portable", 4, true, false, "electric", 279, 3, 5, "hybrid", "https://www.storz-bickel.com/en-ca/crafty-plus-c", 5),
+    new Device("Mighty+", 0.3, "portable", 4, true, false, "electric", 279, 3, 5, "hybrid", "https://www.storz-bickel.com/en-ca/crafty-plus-c", 10),
 ];
 
 document.getElementById('infoForm').addEventListener('submit', function(event) {
@@ -77,13 +84,13 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
             stealth_weigth = 2;
         case "discreet":
             stealth_weigth = 1;
-        case "invisible":
+        case "open":
             stealth_weigth = 0;
     }
 
     const speed = document.getElementById('speed').value;
     const butane_ok = document.getElementById('butane_ok').value;
-    const budget = document.getElementById('budget').value;
+    const budget = document.getElementById('budget').value*10;
     const glass = document.getElementById('glass_fraction').value * 10;
     const heating = document.getElementById('heating').value;
 
@@ -97,9 +104,24 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
             desired_convection_fraction = 0.5;
     }
 
-    console.log(devices);
+    // Adjust the price of butane devices based on whether they will be used with a torch or an induction heater
+    const amended_devices = devices.map(device => {
+        const amended_device = {...device};
+        // Fuck javascript
+        amended_device.convection_fraction = device.convection_fraction;
 
-    const viable_devices = devices
+        if ((butane_ok == "no") && (device.heat_source == "butane/induction")) {
+            amended_device.name += " + Ispire Wand";
+            amended_device.price += 130;
+        } else if (device.heat_source != "electric") {
+            amended_device.name += " + Cheap Butane Torch";
+            amended_device.price += 5;
+        }
+
+        return amended_device;
+    });
+
+    const viable_devices = amended_devices
         // Remove butane devices if user doesn't want to use torch
         .filter(device => !((butane_ok == "no") && (device.heat_source == "butane")))
         // Remove desktops if user needs a portable
@@ -127,28 +149,37 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
             }
         });
 
-    console.log(viable_devices);
-
     const device_suitabilities = viable_devices.map(device => {
-        score = Math.sqrt(device.bowl_size / (amount_consumed * participants), 5) // Does the device hold enough herb?
-              + 5 - stealth_weigth * (5-device.stealth)
-              + 5 * (1- Math.abs(device.convection_fraction() - desired_convection_fraction));
+        const bowl_score = Math.min(Math.sqrt(10*device.bowl_size / (amount_consumed * participants)), 10); // Does the device hold enough herb?
+        const stealth_score = 5 - stealth_weigth * (5-device.stealth)
+        const heat_type_score = 5 * (1- Math.abs(device.convection_fraction() - desired_convection_fraction));
+        const cost_score = 5 - 10*(device.price / budget); 
+        const battery_life_score = Math.min(10, device.bowls_per_charge);
+        const butane_score = device.heat_source == "butane" || (device.heat_source == "butane/induction" && butane_ok == false) ? -2 : 0; // Deduct a small number of points for using butane vs. electric, as most people prefer electric, all else being equal
+
+        console.log("Scores:");
+        console.log(bowl_score);
+        //console.log(stealth_score);
+        //console.log(heat_type_score);
+        //console.log(cost_score);
+        //console.log(battery_life_score);
+        //console.log(butane_score);
+
+        const score = bowl_score + stealth_score + heat_type_score + cost_score + battery_life_score + butane_score;
 
         return {device: device, score: score};
     });
 
-    device_suitabilities.sort((d1, d2) => d1.score - d2.score);
-
+    device_suitabilities.sort((d1, d2) => d2.score - d1.score);
 
     document.getElementById('summary').innerHTML = makeDeviceList(device_suitabilities);
 });
 
 makeDeviceList = function(device_scores) {
-    var device_ids = device_scores.map(d => d.device.name);
     str = "<ul>";
 
-    device_ids.forEach(d_id => {
-        str += "<li>" + d_id + "</li>";
+    device_scores.forEach(d => {
+        str += "<li>" + makeDeviceListing(d) + "</li>";
     });
 
     str += "</ul>";
@@ -156,12 +187,19 @@ makeDeviceList = function(device_scores) {
     return str;
 }
 
-document.getElementById("glass_fraction_display").innerHTML = "50%";
+makeDeviceListing = function(device_score) {
+    const device = device_score.device;
+    const score = device_score.score.toPrecision(3);
+
+    return `${score}: <a href=${device.url}>${device.name}</a>`;
+}
+
 document.getElementById("glass_fraction").oninput = function() {
     document.getElementById("glass_fraction_display").innerHTML = this.value*10 + "%";
 }
+document.getElementById("glass_fraction_display").innerHTML = document.getElementById("glass_fraction").value*10 + "%";
 
-document.getElementById("budget_display").innerHTML = "$150";
 document.getElementById("budget").oninput = function() {
     document.getElementById("budget_display").innerHTML = "$" + this.value*10;
 }
+document.getElementById("budget_display").innerHTML = "$" + document.getElementById("budget").value*10;
