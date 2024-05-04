@@ -89,6 +89,10 @@ const devices = [
     new Device("Tinymight 2", 0.5, "portable", 4, true, true, "electric", 349, 2, 5, "convection", "https://www.planetofthevapes.com/products/tinymight-2-vaporizer", 6, 4, 5),
     new Device("Pax Plus", 0.3, "portable", 5, true, false, "electric", 160, 0, 5, "conduction", "https://www.pax.com/vapes/pax-plus", 5, 0, 5),
     new Device("Arizer XQ2", 0.5, "desktop", 0, true, false, "electric", 250, 0, 5, "hybrid", "https://arizer.com/xq2/", 10, 2, 5),
+    new Device("Cloud Connoisseur Omega", 1, "desktop", 0, false, true, "electric", 170, 5, 0, "convection", "https://cloud-connoisseur.company.site/Omega-Coiled-Kit-Lite-p578084717", 10, 5, 1),
+    new Device("Cloud Connoisseur Zeal", 1, "desktop", 0, false, true, "electric", 126, 5, 0, "convection", "https://cloud-connoisseur.company.site/SS-Zeal-Kit-Lite-p611851552", 10, 5, 1),
+    new Device("Flowerpot B0", 1, "desktop", 0, false, true, "electric", 309, 5, 0, "convection", "https://www.cannabishardware.com/products/flowerpot-bzero-bundle", 10, 5, 1),
+    new Device("Freight Train", 1, "desktop", 0, false, true, "electric", 400, 5, 0, "convection", "https://oldheadtc.com/products/freight-train-pro-kit-w-pro-engine", 10, 5, 1),
 ];
 
 document.getElementById('infoForm').addEventListener('submit', function(event) {
