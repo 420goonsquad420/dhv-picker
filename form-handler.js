@@ -8,7 +8,7 @@ class Device {
     constructor(name, bowl_size, form_factor, stealth, has_session, has_on_demand, heat_source, price, glass_friendliness, glass_free_friendliness, heating, url, bowls_per_charge) {
         this.name = name;
 
-        // In grams
+        // In grams 
         console.assert(typeof(bowl_size) === "number", "Error: Invalid price");
         this.bowl_size = bowl_size;
 
@@ -82,10 +82,13 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
     switch (stealth) {
         case "invisible":
             stealth_weigth = 2;
+            break;
         case "discreet":
             stealth_weigth = 1;
+            break;
         case "open":
             stealth_weigth = 0;
+            break;
     }
 
     const speed = document.getElementById('speed').value;
@@ -98,10 +101,13 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
     switch (heating) {
         case "conduction":
             desired_convection_fraction = 0;
+            break;
         case "convection":
             desired_convection_fraction = 1;
+            break;
         case "hybrid":
             desired_convection_fraction = 0.5;
+            break;
     }
 
     // Adjust the price of butane devices based on whether they will be used with a torch or an induction heater
@@ -110,11 +116,11 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         // Fuck javascript
         amended_device.convection_fraction = device.convection_fraction;
 
-        if ((butane_ok == "no") && (device.heat_source == "butane/induction")) {
+        if ((butane_ok == "no" || butane_ok == "yes_but_pay") && (device.heat_source == "butane/induction")) {
             amended_device.name += " + Ispire Wand";
             amended_device.price += 130;
         } else if (device.heat_source != "electric") {
-            amended_device.name += " + Cheap Butane Torch";
+            amended_device.name += " + Butane Torch";
             amended_device.price += 5;
         }
 
@@ -151,15 +157,17 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
 
     const device_suitabilities = viable_devices.map(device => {
         const bowl_score = Math.min(Math.sqrt(10*device.bowl_size / (amount_consumed * participants)), 10); // Does the device hold enough herb?
-        const stealth_score = 5 - stealth_weigth * (5-device.stealth)
+        const stealth_score = 5 * stealth_weigth * device.stealth;
         const heat_type_score = 5 * (1- Math.abs(device.convection_fraction() - desired_convection_fraction));
         const cost_score = 5 - 10*(device.price / budget); 
         const battery_life_score = Math.min(10, device.bowls_per_charge);
-        const butane_score = device.heat_source == "butane" || (device.heat_source == "butane/induction" && butane_ok == false) ? -2 : 0; // Deduct a small number of points for using butane vs. electric, as most people prefer electric, all else being equal
+        const butane_score = (["yes_but", "yes_but_pay"].includes(butane_ok) && device.heat_source == "butane") || (butane_ok == "yes_but" && device.heat_source == "butane/induction") ? -2 : 0;
 
+        console.log(`Stealth: ${device.stealth}`);
+        console.log(`Stealth weight: ${stealth_weigth}`);
         console.log("Scores:");
-        console.log(bowl_score);
-        //console.log(stealth_score);
+        //console.log(bowl_score);
+        console.log(stealth_score);
         //console.log(heat_type_score);
         //console.log(cost_score);
         //console.log(battery_life_score);
