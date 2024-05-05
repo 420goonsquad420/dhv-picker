@@ -59,6 +59,10 @@ class Device {
         this.ease_of_use = ease_of_use;
     }
 
+    static from_obj(obj) {
+        return new Device(obj.name, obj.bowl_size, obj.form_factor, obj.stealth, obj.has_session, obj.has_on_demand, obj.heat_source, obj.price, obj.glass_friendliness, obj.glass_free_friendliness, obj.heating, obj.url, obj.bowls_per_charge, obj.hard_hittingness, obj.ease_of_use);
+    }
+
     convection_fraction() {
         switch (this.heating) {
             case "conduction":
@@ -138,9 +142,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
 
     // Adjust the price of butane devices based on whether they will be used with a torch or an induction heater
     const amended_devices = devices.map(device => {
-        const amended_device = {...device};
-        // Fuck javascript
-        amended_device.convection_fraction = device.convection_fraction;
+        const amended_device = Device.from_obj({...device});
 
         if ((butane_ok == "no" || butane_ok == "yes_but_pay") && (device.heat_source == "butane/induction")) {
             amended_device.name += " + Ispire Wand";
