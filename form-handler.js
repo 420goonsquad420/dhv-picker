@@ -73,10 +73,10 @@ class Device {
 
 const devices = [
     new Device("Dynavap B", 0.05, "portable", 1, true, true, "butane/induction", 39, 4, 5, "hybrid", "https://www.dynavap.com/products/the-b", 10, 1, 1),
-    new Device("Dynavap M7", 0.1, "portable", 1, true, true, "butane/induction", 75, 4, 5, "hybrid", "https://www.dynavap.com/products/the-b", 10, 2, 1),
-    new Device("Dynavap M7 XL", 0.1, "portable", 1, true, true, "butane/induction", 100, 4, 5, "hybrid", "https://www.dynavap.com/products/the-b", 10, 2, 1),
+    new Device("Dynavap M7", 0.1, "portable", 1, true, true, "butane/induction", 75, 4, 5, "hybrid", "https://www.dynavap.com/products/the-m-7", 10, 2, 1),
+    new Device("Dynavap M7 XL", 0.1, "portable", 1, true, true, "butane/induction", 100, 4, 5, "hybrid", "https://www.dynavap.com/products/the-m-7-xl", 10, 2, 1),
     new Device("Crafty+", 0.3, "portable", 4, true, false, "electric", 279, 2, 5, "hybrid", "https://www.storz-bickel.com/en-ca/crafty-plus-c", 5, 1, 5),
-    new Device("Mighty+", 0.3, "portable", 3, true, false, "electric", 279, 2, 5, "hybrid", "https://www.storz-bickel.com/en-ca/crafty-plus-c", 10, 1, 5),
+    new Device("Mighty+", 0.3, "portable", 3, true, false, "electric", 279, 2, 5, "hybrid", "https://www.storz-bickel.com/en-us/mighty-plus", 10, 1, 5),
     new Device("Volcano Hybrid", 0.75, "desktop", 0, true, false, "electric", 699, 0, 5, "hybrid", "https://www.storz-bickel.com/en-ca/volcanohybrid", 10, 2, 5),
     new Device("Dani Fusion 2.0", 0.18, "portable", 1, true, true, "butane/induction", 139, 5, 5, "hybrid", "https://batteryfreeganz.com/products/dani-fusion-2-0-metal-stem-new", 10, 3, 1),
     new Device("Terpsicle", 0.5, "desktop", 0, false, true, "butane", 56, 5, 0, "hybrid", "https://theroguewaxworks.com/collections/glass-vaporizers/products/conduction-convection-the-terpcicle-14mm-short?variant=40194797633610", 10, 3, 0),
