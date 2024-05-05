@@ -176,12 +176,13 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         .filter(device => !((stealth == "invisible") && (device.stealth < 2)))
         // Ensure device can do session/on-demand as desired
         .filter(device => {
-            if (speed == "session") {
-                return device.has_session;
-            } else if (speed == "on_demand") {
-                return device.has_on_demand;
-            } else {
-                return true;
+            switch(speed) {
+                case "session":
+                    return device.has_session;
+                case "on_demand":
+                    return device.has_on_demand;
+                default:
+                    return true
             }
         });
 
