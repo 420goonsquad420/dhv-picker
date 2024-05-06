@@ -98,7 +98,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         const heat_type_score = 5 * (1- Math.abs(device.convection_fraction() - desired_convection_fraction));
         const cost_score = 5 - 10*(device.price / budget); 
         const battery_life_score = -bowls_per_day / device.bowls_per_charge;
-        const butane_score = (["yes_but", "yes_but_pay"].includes(butane_ok) && device.heat_source == "butane") || (butane_ok == "yes_but" && device.heat_source == "butane/induction") ? -2 : 0;
+        const butane_score = (["yes_but", "yes_but_pay"].includes(butane_ok) && device.heat_source == "butane") || (butane_ok == "yes_but" && device.heat_source == "butane/induction") ? -5 : 0;
         const convenience_score = glass_frac * device.glass_friendliness + (1-glass_frac) * device.glass_free_friendliness + ease_weight * device.ease_of_use;
         const hit_score = speed == "on_demand" ? 2 * device.hard_hittingness : device.hard_hittingness;
 
