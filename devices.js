@@ -14,7 +14,7 @@ export const devices = [
         glass_free_friendliness: 5,
         heating: "hybrid",
         url: "https://www.dynavap.com/products/the-b",
-        bowls_per_charge: 10,
+        bowls_per_charge: 100,
         hard_hittingness: 1,
         ease_of_use: 1
     }),
@@ -31,7 +31,7 @@ export const devices = [
         glass_free_friendliness: 5,
         heating: "hybrid",
         url: "https://www.dynavap.com/products/the-m-7",
-        bowls_per_charge: 10,
+        bowls_per_charge: 50,
         hard_hittingness: 2,
         ease_of_use: 1
     }),
@@ -48,7 +48,7 @@ export const devices = [
         glass_free_friendliness: 5,
         heating: "hybrid",
         url: "https://www.dynavap.com/products/the-m-7-xl",
-        bowls_per_charge: 10,
+        bowls_per_charge: 50,
         hard_hittingness: 2,
         ease_of_use: 1
     }),
@@ -99,7 +99,7 @@ export const devices = [
         glass_free_friendliness: 5,
         heating: "hybrid",
         url: "https://www.storz-bickel.com/en-ca/volcanohybrid",
-        bowls_per_charge: 10,
+        bowls_per_charge: 1000,
         hard_hittingness: 2,
         ease_of_use: 5
     }),
@@ -116,14 +116,14 @@ export const devices = [
         glass_free_friendliness: 5,
         heating: "hybrid",
         url: "https://batteryfreeganz.com/products/dani-fusion-2-0-metal-stem-new",
-        bowls_per_charge: 10,
+        bowls_per_charge: 20,
         hard_hittingness: 3,
         ease_of_use: 1
     }),
     Device.from_obj({
-        name: "Terpsicle",
+        name: "TRRW Terpsicle",
         bowl_size: 0.5,
-        form_factor: "desktop",
+        form_factor: "portable",
         stealth: 0,
         has_session: false,
         has_on_demand: true,
@@ -133,14 +133,14 @@ export const devices = [
         glass_free_friendliness: 0,
         heating: "hybrid",
         url: "https://theroguewaxworks.com/collections/glass-vaporizers/products/conduction-convection-the-terpcicle-14mm-short?variant=40194797633610",
-        bowls_per_charge: 10,
+        bowls_per_charge: 20,
         hard_hittingness: 3,
         ease_of_use: 0
     }),
     Device.from_obj({
-        name: "Quartz Cap",
+        name: "TRRW Quartz Cap",
         bowl_size: 0.5,
-        form_factor: "desktop",
+        form_factor: "portable",
         stealth: 0,
         has_session: false,
         has_on_demand: true,
@@ -150,14 +150,14 @@ export const devices = [
         glass_free_friendliness: 0,
         heating: "hybrid",
         url: "https://theroguewaxworks.com/collections/glass-vaporizers/products/glass-cap-beta?variant=39928465129546",
-        bowls_per_charge: 10,
+        bowls_per_charge: 20,
         hard_hittingness: 4,
         ease_of_use: 0
     }),
     Device.from_obj({
-        name: "Quartz Cap Mega",
+        name: "TRRW Quartz Cap Mega",
         bowl_size: 0.75,
-        form_factor: "desktop",
+        form_factor: "portable",
         stealth: 0,
         has_session: false,
         has_on_demand: true,
@@ -167,7 +167,7 @@ export const devices = [
         glass_free_friendliness: 0,
         heating: "hybrid",
         url: "https://theroguewaxworks.com/collections/glass-vaporizers/products/conduction-convection-quartz-cap-mega",
-        bowls_per_charge: 10,
+        bowls_per_charge: 20,
         hard_hittingness: 4,
         ease_of_use: 0
     }),
@@ -184,7 +184,7 @@ export const devices = [
         glass_free_friendliness: 5,
         heating: "conduction",
         url: "https://www.planetofthevapes.com/products/vapman-vaporizer?variant=41767684079811",
-        bowls_per_charge: 10,
+        bowls_per_charge: 30,
         hard_hittingness: 1,
         ease_of_use: 0
     }),
@@ -320,7 +320,7 @@ export const devices = [
         glass_free_friendliness: 5,
         heating: "hybrid",
         url: "https://arizer.com/xq2/",
-        bowls_per_charge: 10,
+        bowls_per_charge: 1000,
         hard_hittingness: 2,
         ease_of_use: 5
     }),
@@ -405,7 +405,7 @@ export const devices = [
         glass_free_friendliness: 0,
         heating: "convection",
         url: "https://cloud-connoisseur.company.site/Omega-Coiled-Kit-Lite-p578084717",
-        bowls_per_charge: 10,
+        bowls_per_charge: 1000,
         hard_hittingness: 5,
         ease_of_use: 1
     }),
@@ -422,7 +422,7 @@ export const devices = [
         glass_free_friendliness: 0,
         heating: "convection",
         url: "https://cloud-connoisseur.company.site/SS-Zeal-Kit-Lite-p611851552",
-        bowls_per_charge: 10,
+        bowls_per_charge: 1000,
         hard_hittingness: 5,
         ease_of_use: 1
     }),
@@ -439,7 +439,7 @@ export const devices = [
         glass_free_friendliness: 0,
         heating: "convection",
         url: "https://www.cannabishardware.com/products/flowerpot-bzero-bundle",
-        bowls_per_charge: 10,
+        bowls_per_charge: 1000,
         hard_hittingness: 5,
         ease_of_use: 1
     }),
@@ -456,7 +456,7 @@ export const devices = [
         glass_free_friendliness: 0,
         heating: "convection",
         url: "https://oldheadtc.com/products/freight-train-pro-kit-w-pro-engine",
-        bowls_per_charge: 10,
+        bowls_per_charge: 1000,
         hard_hittingness: 5,
         ease_of_use: 1
     }),

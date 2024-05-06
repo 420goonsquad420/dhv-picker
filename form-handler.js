@@ -60,7 +60,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         // Remove butane devices if user doesn't want to use torch
         .filter(device => !((butane_ok == "no") && (device.heat_source == "butane")))
         // Remove desktops if user needs a portable
-        .filter(device => !((portability == "portable") && (device.portability == "desktop")))
+        .filter(device => !((portability == "portable") && (device.form_factor == "desktop")))
         // Cap to devices within budget
         .filter(device => device.price <= budget)
         // Remove glass-only devices for users who want a handheld, and glass-incompatible devices for users who want to use glass
@@ -91,16 +91,22 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
 
     const device_suitabilities = viable_devices.map(device => {
 
-        const bowls_per_day = (amount_consumed * participants) / device.bowl_size;
 
-        const bowl_score = -bowls_per_day; 
-        const stealth_score = stealth_weigth * device.stealth;
-        const heat_type_score = 5 * (1- Math.abs(device.convection_fraction() - desired_convection_fraction));
-        const cost_score = 5 - 10*(device.price / budget); 
-        const battery_life_score = -bowls_per_day / device.bowls_per_charge;
+        const bowl_score = -0.5 * Math.max(device.bowl_size, amount_consumed) / Math.min(device.bowl_size, amount_consumed);
+
+        const stealth_score = stealth_weigth * -(5-device.stealth);
+
+        const heat_type_score = 5 * (1 - Math.abs(device.convection_fraction() - desired_convection_fraction));
+
+        const cost_score = 5 * (1 - (device.price / budget));
+
+        const bowls_per_day = (amount_consumed * participants) / device.bowl_size;
+        const battery_life_score = (portability == "portable" ? 1 : 0.2)*-(bowls_per_day / device.bowls_per_charge);
+
         const butane_score = (["yes_but", "yes_but_pay"].includes(butane_ok) && device.heat_source == "butane") || (butane_ok == "yes_but" && device.heat_source == "butane/induction") ? -5 : 0;
         const convenience_score = glass_frac * device.glass_friendliness + (1-glass_frac) * device.glass_free_friendliness + ease_weight * device.ease_of_use;
-        const hit_score = speed == "on_demand" ? 2 * device.hard_hittingness : device.hard_hittingness;
+
+        const hit_score = device.hard_hittingness * ((speed == "on_demand" ? 2 : 1) + amount_consumed/4);
 
         const score = bowl_score + stealth_score + heat_type_score + cost_score + battery_life_score + butane_score + convenience_score + hit_score;
 
