@@ -15,7 +15,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 1,
-        ease_of_use: 1
+        ease_of_use: 1,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Dynavap M7",
@@ -31,7 +32,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 2,
-        ease_of_use: 1
+        ease_of_use: 1,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Dynavap M7 XL",
@@ -47,7 +49,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 2,
-        ease_of_use: 1
+        ease_of_use: 1,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Crafty+",
@@ -63,7 +66,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 5,
         hard_hittingness: 1,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Mighty+",
@@ -79,7 +83,26 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 1,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
+    }),
+    Device.from_obj({
+        name: "Venty",
+        bowl_size: 0.35,
+        form_factor: "portable",
+        stealth: 3,
+        has_session: true,
+        has_on_demand: true,
+        heat_source: "electric",
+        price: 449,
+        glass_friendliness: 2,
+        glass_free_friendliness: 5,
+        heating: "hybrid",
+        url: "https://www.storz-bickel.com/en-us/venty",
+        bowls_per_charge: 12,
+        hard_hittingness: 2,
+        ease_of_use: 5,
+        airflow: "adjustable",
     }),
     Device.from_obj({
         name: "Volcano Hybrid",
@@ -95,7 +118,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 2,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "open",
     }),
     Device.from_obj({
         name: "Dani Fusion 2.0",
@@ -111,7 +135,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 3,
-        ease_of_use: 1
+        ease_of_use: 1,
+        airflow: "adjustable",
     }),
     Device.from_obj({
         name: "Terpsicle",
