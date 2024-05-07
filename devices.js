@@ -67,7 +67,7 @@ export const devices = [
         bowls_per_charge: 5,
         hard_hittingness: 1,
         ease_of_use: 5,
-        airflow: "restricted",
+        airflow: "open",
     }),
     Device.from_obj({
         name: "Mighty+",
@@ -84,7 +84,7 @@ export const devices = [
         bowls_per_charge: 10,
         hard_hittingness: 1,
         ease_of_use: 5,
-        airflow: "restricted",
+        airflow: "open",
     }),
     Device.from_obj({
         name: "Venty",
@@ -152,7 +152,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 3,
-        ease_of_use: 0
+        ease_of_use: 0,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Quartz Cap",
@@ -168,7 +169,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 4,
-        ease_of_use: 0
+        ease_of_use: 0,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Quartz Cap Mega",
@@ -184,7 +186,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 4,
-        ease_of_use: 0
+        ease_of_use: 0,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Vapman Inox",
@@ -200,7 +203,8 @@ export const devices = [
         heating: "conduction",
         bowls_per_charge: 10,
         hard_hittingness: 1,
-        ease_of_use: 0
+        ease_of_use: 0,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "POTV Lobo",
@@ -216,7 +220,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 2,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "POTV ONE",
@@ -232,7 +237,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 1,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Healthy Rips Rogue",
@@ -248,7 +254,8 @@ export const devices = [
         heating: "convection",
         bowls_per_charge: 15,
         hard_hittingness: 2,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Healthy Rips Fury Edge",
@@ -264,7 +271,8 @@ export const devices = [
         heating: "convection",
         bowls_per_charge: 12,
         hard_hittingness: 2,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "XMAX V3 Pro",
@@ -280,7 +288,8 @@ export const devices = [
         heating: "convection",
         bowls_per_charge: 10,
         hard_hittingness: 1,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Tinymight 2",
@@ -296,7 +305,8 @@ export const devices = [
         heating: "convection",
         bowls_per_charge: 6,
         hard_hittingness: 4,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Pax Plus",
@@ -312,7 +322,8 @@ export const devices = [
         heating: "conduction",
         bowls_per_charge: 5,
         hard_hittingness: 0,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Arizer XQ2",
@@ -328,7 +339,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 10,
         hard_hittingness: 2,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "open",
     }),
     Device.from_obj({
         name: "Arizer Air MAX",
@@ -344,7 +356,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 13,
         hard_hittingness: 2,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Arizer Solo II",
@@ -360,7 +373,8 @@ export const devices = [
         heating: "hybrid",
         bowls_per_charge: 13,
         hard_hittingness: 2,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Arizer Solo III",
@@ -376,7 +390,8 @@ export const devices = [
         heating: "convection",
         bowls_per_charge: 13,
         hard_hittingness: 3,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Air Vape Legacy Pro",
@@ -392,7 +407,8 @@ export const devices = [
         heating: "convection",
         bowls_per_charge: 10,
         hard_hittingness: 3,
-        ease_of_use: 5
+        ease_of_use: 5,
+        airflow: "restricted",
     }),
     Device.from_obj({
         name: "Cloud Connoisseur Omega",
@@ -408,7 +424,8 @@ export const devices = [
         heating: "convection",
         bowls_per_charge: 10,
         hard_hittingness: 5,
-        ease_of_use: 1
+        ease_of_use: 1,
+        airflow: "open",
     }),
     Device.from_obj({
         name: "Cloud Connoisseur Zeal",
@@ -424,7 +441,8 @@ export const devices = [
         heating: "convection",
         bowls_per_charge: 10,
         hard_hittingness: 5,
-        ease_of_use: 1
+        ease_of_use: 1,
+        airflow: "open",
     }),
     Device.from_obj({
         name: "Flowerpot B0",
@@ -440,7 +458,8 @@ export const devices = [
         heating: "convection",
         bowls_per_charge: 10,
         hard_hittingness: 5,
-        ease_of_use: 1
+        ease_of_use: 1,
+        airflow: "open",
     }),
     Device.from_obj({
         name: "Freight Train",
@@ -456,6 +475,7 @@ export const devices = [
         heating: "convection",
         bowls_per_charge: 10,
         hard_hittingness: 5,
-        ease_of_use: 1
+        ease_of_use: 1,
+        airflow: "open",
     }),
 ];
