@@ -3,6 +3,7 @@ const heat_sources = ["butane", "butane/induction", "electric"];
 const heating_types = ["convection", "conduction", "hybrid"];
 const zero_five_scale = [0,1,2,3,4,5];
 const airflows = ["open", "restricted", "adjustable"];
+const battery_replaceabilities = ["yes", "no", "n/a"];
 
 export class Device {
     constructor(
@@ -21,6 +22,7 @@ export class Device {
         hard_hittingness, 
         ease_of_use,
         airflow,
+        battery_replaceability,
     ) {
         this.name = name;
 
@@ -73,6 +75,9 @@ export class Device {
 
         console.assert(airflows.includes(airflow), "Not a valid airflow");
         this.airflow = airflow;
+
+        console.assert(battery_replaceabilities.includes(battery_replaceability), "Not a valid battery_replaceability");
+        this.battery_replaceability = battery_replaceability;
     }
 
     static from_obj(obj) {
@@ -93,6 +98,7 @@ export class Device {
             obj.hard_hittingness, 
             obj.ease_of_use,
             obj.airflow,
+            obj.battery_replaceability,
         );
     }
 
