@@ -128,7 +128,7 @@ function makeDeviceItem(device_score) {
     const device = device_score.device;
     const score = device_score.score.toPrecision(3);
 
-    return `${score}: <a href=${device.url}>${device.name}</a>`;
+    return `${score}: ${device.name}`;
 }
 
 document.getElementById("glass_fraction").oninput = function() {

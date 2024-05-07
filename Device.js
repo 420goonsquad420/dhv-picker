@@ -4,7 +4,7 @@ const heating_types = ["convection", "conduction", "hybrid"];
 const zero_five_scale = [0,1,2,3,4,5];
 
 export class Device {
-    constructor(name, bowl_size, form_factor, stealth, has_session, has_on_demand, heat_source, price, glass_friendliness, glass_free_friendliness, heating, url, bowls_per_charge, hard_hittingness, ease_of_use) {
+    constructor(name, bowl_size, form_factor, stealth, has_session, has_on_demand, heat_source, price, glass_friendliness, glass_free_friendliness, heating, bowls_per_charge, hard_hittingness, ease_of_use) {
         this.name = name;
 
         // In grams 
@@ -43,9 +43,6 @@ export class Device {
         console.assert(heating_types.includes(heating), "Error: Invalid heating type");
         this.heating = heating;
 
-        console.assert(typeof(url) === "string", "Error: Invalid url");
-        this.url = url;
-
         console.assert(typeof(bowls_per_charge) === "number" && bowls_per_charge > 0, "Error: Invalid bowls_per_charge");
         this.bowls_per_charge = bowls_per_charge;
 
@@ -59,7 +56,7 @@ export class Device {
     }
 
     static from_obj(obj) {
-        return new Device(obj.name, obj.bowl_size, obj.form_factor, obj.stealth, obj.has_session, obj.has_on_demand, obj.heat_source, obj.price, obj.glass_friendliness, obj.glass_free_friendliness, obj.heating, obj.url, obj.bowls_per_charge, obj.hard_hittingness, obj.ease_of_use);
+        return new Device(obj.name, obj.bowl_size, obj.form_factor, obj.stealth, obj.has_session, obj.has_on_demand, obj.heat_source, obj.price, obj.glass_friendliness, obj.glass_free_friendliness, obj.heating, obj.bowls_per_charge, obj.hard_hittingness, obj.ease_of_use);
     }
 
     copy() {

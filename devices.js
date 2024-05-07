@@ -13,7 +13,6 @@ export const devices = [
         glass_friendliness: 4,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://www.dynavap.com/products/the-b",
         bowls_per_charge: 10,
         hard_hittingness: 1,
         ease_of_use: 1
@@ -30,7 +29,6 @@ export const devices = [
         glass_friendliness: 4,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://www.dynavap.com/products/the-m-7",
         bowls_per_charge: 10,
         hard_hittingness: 2,
         ease_of_use: 1
@@ -47,7 +45,6 @@ export const devices = [
         glass_friendliness: 4,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://www.dynavap.com/products/the-m-7-xl",
         bowls_per_charge: 10,
         hard_hittingness: 2,
         ease_of_use: 1
@@ -64,7 +61,6 @@ export const devices = [
         glass_friendliness: 2,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://www.storz-bickel.com/en-ca/crafty-plus-c",
         bowls_per_charge: 5,
         hard_hittingness: 1,
         ease_of_use: 5
@@ -81,7 +77,6 @@ export const devices = [
         glass_friendliness: 2,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://www.storz-bickel.com/en-us/mighty-plus",
         bowls_per_charge: 10,
         hard_hittingness: 1,
         ease_of_use: 5
@@ -98,7 +93,6 @@ export const devices = [
         glass_friendliness: 0,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://www.storz-bickel.com/en-ca/volcanohybrid",
         bowls_per_charge: 10,
         hard_hittingness: 2,
         ease_of_use: 5
@@ -115,7 +109,6 @@ export const devices = [
         glass_friendliness: 5,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://batteryfreeganz.com/products/dani-fusion-2-0-metal-stem-new",
         bowls_per_charge: 10,
         hard_hittingness: 3,
         ease_of_use: 1
@@ -132,7 +125,6 @@ export const devices = [
         glass_friendliness: 5,
         glass_free_friendliness: 0,
         heating: "hybrid",
-        url: "https://theroguewaxworks.com/collections/glass-vaporizers/products/conduction-convection-the-terpcicle-14mm-short?variant=40194797633610",
         bowls_per_charge: 10,
         hard_hittingness: 3,
         ease_of_use: 0
@@ -149,7 +141,6 @@ export const devices = [
         glass_friendliness: 5,
         glass_free_friendliness: 0,
         heating: "hybrid",
-        url: "https://theroguewaxworks.com/collections/glass-vaporizers/products/glass-cap-beta?variant=39928465129546",
         bowls_per_charge: 10,
         hard_hittingness: 4,
         ease_of_use: 0
@@ -166,7 +157,6 @@ export const devices = [
         glass_friendliness: 5,
         glass_free_friendliness: 0,
         heating: "hybrid",
-        url: "https://theroguewaxworks.com/collections/glass-vaporizers/products/conduction-convection-quartz-cap-mega",
         bowls_per_charge: 10,
         hard_hittingness: 4,
         ease_of_use: 0
@@ -183,7 +173,6 @@ export const devices = [
         glass_friendliness: 0,
         glass_free_friendliness: 5,
         heating: "conduction",
-        url: "https://www.planetofthevapes.com/products/vapman-vaporizer?variant=41767684079811",
         bowls_per_charge: 10,
         hard_hittingness: 1,
         ease_of_use: 0
@@ -200,7 +189,6 @@ export const devices = [
         glass_friendliness: 2,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://www.planetofthevapes.com/products/planet-of-the-vapes-lobo",
         bowls_per_charge: 10,
         hard_hittingness: 2,
         ease_of_use: 5
@@ -217,7 +205,6 @@ export const devices = [
         glass_friendliness: 2,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://www.planetofthevapes.com/products/potv-one-vaporizer",
         bowls_per_charge: 10,
         hard_hittingness: 1,
         ease_of_use: 5
@@ -234,7 +221,6 @@ export const devices = [
         glass_friendliness: 3,
         glass_free_friendliness: 5,
         heating: "convection",
-        url: "https://www.healthyrips.com/store/p114/ROGUE_DHE_Device.html",
         bowls_per_charge: 15,
         hard_hittingness: 2,
         ease_of_use: 5
@@ -251,7 +237,6 @@ export const devices = [
         glass_friendliness: 2,
         glass_free_friendliness: 5,
         heating: "convection",
-        url: "https://www.healthyrips.com/store/p113/FURY_EDGE_DHE_Device.html",
         bowls_per_charge: 12,
         hard_hittingness: 2,
         ease_of_use: 5
@@ -268,7 +253,6 @@ export const devices = [
         glass_friendliness: 2,
         glass_free_friendliness: 5,
         heating: "convection",
-        url: "https://www.planetofthevapes.com/products/xmax-v3-pro-vaporizer",
         bowls_per_charge: 10,
         hard_hittingness: 1,
         ease_of_use: 5
@@ -285,7 +269,6 @@ export const devices = [
         glass_friendliness: 2,
         glass_free_friendliness: 5,
         heating: "convection",
-        url: "https://www.planetofthevapes.com/products/tinymight-2-vaporizer",
         bowls_per_charge: 6,
         hard_hittingness: 4,
         ease_of_use: 5
@@ -302,7 +285,6 @@ export const devices = [
         glass_friendliness: 0,
         glass_free_friendliness: 5,
         heating: "conduction",
-        url: "https://www.pax.com/vapes/pax-plus",
         bowls_per_charge: 5,
         hard_hittingness: 0,
         ease_of_use: 5
@@ -319,7 +301,6 @@ export const devices = [
         glass_friendliness: 0,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://arizer.com/xq2/",
         bowls_per_charge: 10,
         hard_hittingness: 2,
         ease_of_use: 5
@@ -336,7 +317,6 @@ export const devices = [
         glass_friendliness: 2,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://arizer.com/airmax/",
         bowls_per_charge: 13,
         hard_hittingness: 2,
         ease_of_use: 5
@@ -353,7 +333,6 @@ export const devices = [
         glass_friendliness: 2,
         glass_free_friendliness: 5,
         heating: "hybrid",
-        url: "https://arizer.com/solo2/",
         bowls_per_charge: 13,
         hard_hittingness: 2,
         ease_of_use: 5
@@ -370,7 +349,6 @@ export const devices = [
         glass_friendliness: 3,
         glass_free_friendliness: 5,
         heating: "convection",
-        url: "https://arizer.com/solo3/",
         bowls_per_charge: 13,
         hard_hittingness: 3,
         ease_of_use: 5
@@ -387,7 +365,6 @@ export const devices = [
         glass_friendliness: 1,
         glass_free_friendliness: 5,
         heating: "convection",
-        url: "https://airvapeusa.com/products/airvape-legacy-pro",
         bowls_per_charge: 10,
         hard_hittingness: 3,
         ease_of_use: 5
@@ -404,7 +381,6 @@ export const devices = [
         glass_friendliness: 5,
         glass_free_friendliness: 0,
         heating: "convection",
-        url: "https://cloud-connoisseur.company.site/Omega-Coiled-Kit-Lite-p578084717",
         bowls_per_charge: 10,
         hard_hittingness: 5,
         ease_of_use: 1
@@ -421,7 +397,6 @@ export const devices = [
         glass_friendliness: 5,
         glass_free_friendliness: 0,
         heating: "convection",
-        url: "https://cloud-connoisseur.company.site/SS-Zeal-Kit-Lite-p611851552",
         bowls_per_charge: 10,
         hard_hittingness: 5,
         ease_of_use: 1
@@ -438,7 +413,6 @@ export const devices = [
         glass_friendliness: 5,
         glass_free_friendliness: 0,
         heating: "convection",
-        url: "https://www.cannabishardware.com/products/flowerpot-bzero-bundle",
         bowls_per_charge: 10,
         hard_hittingness: 5,
         ease_of_use: 1
@@ -455,7 +429,6 @@ export const devices = [
         glass_friendliness: 5,
         glass_free_friendliness: 0,
         heating: "convection",
-        url: "https://oldheadtc.com/products/freight-train-pro-kit-w-pro-engine",
         bowls_per_charge: 10,
         hard_hittingness: 5,
         ease_of_use: 1
