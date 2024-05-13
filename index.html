@@ -47,13 +47,19 @@
 			</select><br><br>
 
 			<label for="butane_ok">Are you willing and able to use a butane torch?</label><br>
-			<select id="butane_ok" size="4">
-				<option value="yes">Yes</option>
+			<select id="butane_ok" size="3">
+				<option value="yes">Yes, and I don't mind it</option>
 				<option value="yes_but" selected>Yes, but I'd rather not</option>
-				<option value="yes_but_pay">Yes, but I'd rather not, and I'm willing to pay more to avoid it</option>
 				<option value="no">No</option>
 			</select><br><br>
 
+			<label for="own_torch_heater">Do you already own a torch or induction heater?</label><br>
+			<select id="own_torch_heater" size="4">
+				<option value="torch">I own a torch only</option>
+				<option value="induction">I own an induction heater only</option>
+				<option value="both">I own both a torch and an induction heater</option>
+				<option value="neither" selected>Neither</option>
+			</select><br><br>
 
 			<label for="budget">What is the most you're willing to spend (USD)?</label><br>
                         <div class="slidecontainer">
@@ -86,6 +92,13 @@
 				<option value="open">Open</option>
 				<option value="either" selected>Don't know or don't care</option>
 				<option value="restricted">Restricted</option>
+			</select><br><br>
+
+			<label for="flavour_importance">How important is flavour to you?</label><br>
+			<select id="flavour_importance" size="3">
+				<option value=5>Very important</option>
+				<option value=2.5 selected>Somewhat important</option>
+				<option value=0>Not important</option>
 			</select><br><br>
 
 			<input type="submit" value="Submit">
