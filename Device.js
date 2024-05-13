@@ -2,9 +2,28 @@ const form_factors = ["desktop", "portable"];
 const heat_sources = ["butane", "butane/induction", "electric"];
 const heating_types = ["convection", "conduction", "hybrid"];
 const zero_five_scale = [0,1,2,3,4,5];
+const airflows = ["open", "restricted", "adjustable"];
+const battery_replaceabilities = ["yes", "no", "n/a"];
 
 export class Device {
-    constructor(name, bowl_size, form_factor, stealth, has_session, has_on_demand, heat_source, price, glass_friendliness, glass_free_friendliness, heating, bowls_per_charge, hard_hittingness, ease_of_use) {
+    constructor(
+        name, 
+        bowl_size, 
+        form_factor, 
+        stealth, 
+        has_session, 
+        has_on_demand, 
+        heat_source, 
+        price, 
+        glass_friendliness, 
+        glass_free_friendliness, 
+        heating, 
+        bowls_per_charge, 
+        hard_hittingness, 
+        ease_of_use,
+        airflow,
+        battery_replaceability,
+    ) {
         this.name = name;
 
         // In grams 
@@ -53,10 +72,34 @@ export class Device {
         console.assert(!(heat_source == "butane" && ease_of_use > 0), "Butane is more challenging to use");
         console.assert(!(heat_source == "butane/induction" && ease_of_use > 1), "Induction is more challenging to use");
         this.ease_of_use = ease_of_use;
+
+        console.assert(airflows.includes(airflow), "Not a valid airflow");
+        this.airflow = airflow;
+
+        console.assert(battery_replaceabilities.includes(battery_replaceability), "Not a valid battery_replaceability");
+        this.battery_replaceability = battery_replaceability;
     }
 
     static from_obj(obj) {
-        return new Device(obj.name, obj.bowl_size, obj.form_factor, obj.stealth, obj.has_session, obj.has_on_demand, obj.heat_source, obj.price, obj.glass_friendliness, obj.glass_free_friendliness, obj.heating, obj.bowls_per_charge, obj.hard_hittingness, obj.ease_of_use);
+
+        return new Device(
+            obj.name, 
+            obj.bowl_size, 
+            obj.form_factor, 
+            obj.stealth, 
+            obj.has_session, 
+            obj.has_on_demand, 
+            obj.heat_source, 
+            obj.price, 
+            obj.glass_friendliness, 
+            obj.glass_free_friendliness, 
+            obj.heating, 
+            obj.bowls_per_charge, 
+            obj.hard_hittingness, 
+            obj.ease_of_use,
+            obj.airflow,
+            obj.battery_replaceability,
+        );
     }
 
     copy() {

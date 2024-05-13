@@ -42,8 +42,8 @@
 			<label for="speed">How quickly do you want to extract your herb?</label><br>
 			<select id="speed" size="3">
 				<option value="session">Slowly over a continuous period</option>
-				<option value="on_demand">I want it now and I want it fast</option>
 				<option value="dont_know" selected>Either or don't know / don't care</option>
+				<option value="on_demand">I want it now and I want it fast</option>
 			</select><br><br>
 
 			<label for="butane_ok">Are you willing and able to use a butane torch?</label><br>
@@ -70,15 +70,22 @@
 			<label for="heating">Do you prefer conduction or convection heating?</label><br>
 			<select id="heating" size="3">
 				<option value="conduction">Conduction</option>
-				<option value="convection">Convection</option>
 				<option value="hybrid" selected>Hybrid or don't know / don't care</option>
+				<option value="convection">Convection</option>
 			</select><br><br>
 
 			<label for="ease_weight">How important is it for the device to be easy to use?</label><br>
 			<select id="ease_weight" size="3">
-				<option value="5">Very important</option>
-				<option value="2.5" selected>Somewhat important</option>
-				<option value="0">Not important</option>
+				<option value=5>Very important</option>
+				<option value=2.5 selected>Somewhat important</option>
+				<option value=0>Not important</option>
+			</select><br><br>
+
+			<label for="airflow">Do you prefer more open or more restricted airflow?</label><br>
+			<select id="airflow" size="3">
+				<option value="open">Open</option>
+				<option value="either" selected>Don't know or don't care</option>
+				<option value="restricted">Restricted</option>
 			</select><br><br>
 
 			<input type="submit" value="Submit">
