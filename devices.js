@@ -18,6 +18,7 @@ export const devices = [
         ease_of_use: 1,
         airflow: "restricted",
         battery_replaceability: "n/a",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Dynavap M7",
@@ -36,6 +37,7 @@ export const devices = [
         ease_of_use: 1,
         airflow: "restricted",
         battery_replaceability: "n/a",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Dynavap M7 XL",
@@ -54,6 +56,7 @@ export const devices = [
         ease_of_use: 1,
         airflow: "restricted",
         battery_replaceability: "n/a",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Crafty+",
@@ -72,6 +75,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "open",
         battery_replaceability: "no",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Mighty+",
@@ -90,6 +94,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "open",
         battery_replaceability: "no",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Venty",
@@ -109,6 +114,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "adjustable",
         battery_replaceability: "no",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Volcano Hybrid",
@@ -127,6 +133,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "open",
         battery_replaceability: "n/a",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Dani Fusion 2.0",
@@ -145,6 +152,7 @@ export const devices = [
         ease_of_use: 1,
         airflow: "adjustable",
         battery_replaceability: "n/a",
+        flavour: 4,
     }),
     Device.from_obj({
         name: "TRRW Terpsicle",
@@ -163,6 +171,7 @@ export const devices = [
         ease_of_use: 0,
         airflow: "restricted",
         battery_replaceability: "n/a",
+        flavour: 4,
     }),
     Device.from_obj({
         name: "TRRW Quartz Cap",
@@ -181,6 +190,7 @@ export const devices = [
         ease_of_use: 0,
         airflow: "restricted",
         battery_replaceability: "n/a",
+        flavour: 4,
     }),
     Device.from_obj({
         name: "TRRW Quartz Cap Mega",
@@ -199,6 +209,7 @@ export const devices = [
         ease_of_use: 0,
         airflow: "restricted",
         battery_replaceability: "n/a",
+        flavour: 4,
     }),
     Device.from_obj({
         name: "Vapman Inox",
@@ -217,6 +228,7 @@ export const devices = [
         ease_of_use: 0,
         airflow: "restricted",
         battery_replaceability: "n/a",
+        flavour: 5,
     }),
     Device.from_obj({
         name: "POTV Lobo",
@@ -235,6 +247,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "yes",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "POTV ONE",
@@ -253,6 +266,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "no",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Healthy Rips Rogue",
@@ -271,6 +285,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "no",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Healthy Rips Fury Edge",
@@ -289,6 +304,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "no",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "XMAX V3 Pro",
@@ -307,6 +323,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "no",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Tinymight 2",
@@ -325,6 +342,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "yes",
+        flavour: 4,
     }),
     Device.from_obj({
         name: "Pax Plus",
@@ -343,6 +361,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "no",
+        flavour: 2,
     }),
     Device.from_obj({
         name: "Arizer XQ2",
@@ -361,6 +380,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "open",
         battery_replaceability: "n/a",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Arizer Air MAX",
@@ -379,6 +399,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "yes",
+        flavour: 4,
     }),
     Device.from_obj({
         name: "Arizer Solo II",
@@ -397,6 +418,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "no",
+        flavour: 3.5,
     }),
     Device.from_obj({
         name: "Arizer Solo III",
@@ -415,6 +437,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "no",
+        flavour: 3.5,
     }),
     Device.from_obj({
         name: "Air Vape Legacy Pro",
@@ -433,6 +456,7 @@ export const devices = [
         ease_of_use: 5,
         airflow: "restricted",
         battery_replaceability: "yes",
+        flavour: 3,
     }),
     Device.from_obj({
         name: "Cloud Connoisseur Omega",
@@ -451,6 +475,7 @@ export const devices = [
         ease_of_use: 1,
         airflow: "open",
         battery_replaceability: "n/a",
+        flavour: 4,
     }),
     Device.from_obj({
         name: "Cloud Connoisseur Zeal",
@@ -469,6 +494,7 @@ export const devices = [
         ease_of_use: 1,
         airflow: "open",
         battery_replaceability: "n/a",
+        flavour: 4,
     }),
     Device.from_obj({
         name: "Flowerpot B0",
@@ -487,6 +513,7 @@ export const devices = [
         ease_of_use: 1,
         airflow: "open",
         battery_replaceability: "n/a",
+        flavour: 4,
     }),
     Device.from_obj({
         name: "Freight Train",
@@ -505,5 +532,6 @@ export const devices = [
         ease_of_use: 1,
         airflow: "open",
         battery_replaceability: "n/a",
+        flavour: 4,
     }),
 ];

@@ -5,6 +5,10 @@ const zero_five_scale = [0,1,2,3,4,5];
 const airflows = ["open", "restricted", "adjustable"];
 const battery_replaceabilities = ["yes", "no", "n/a"];
 
+function is_float_zero_five(x) {
+    return typeof(x) === "number" || x <=5 && x >=0;
+}
+
 export class Device {
     constructor(
         name, 
@@ -23,6 +27,7 @@ export class Device {
         ease_of_use,
         airflow,
         battery_replaceability,
+        flavour,
     ) {
         this.name = name;
 
@@ -79,6 +84,9 @@ export class Device {
 
         console.assert(battery_replaceabilities.includes(battery_replaceability), "Not a valid battery_replaceability");
         this.battery_replaceability = battery_replaceability;
+        
+        console.assert(is_float_zero_five(flavour), "Error: Invalid flavour");
+        this.flavour = flavour;
     }
 
     static from_obj(obj) {
@@ -100,6 +108,7 @@ export class Device {
             obj.ease_of_use,
             obj.airflow,
             obj.battery_replaceability,
+            obj.flavour,
         );
     }
 
