@@ -27,6 +27,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
     const glass_frac = document.getElementById('glass_fraction').value/10;
     const heating = document.getElementById('heating').value;
     const ease_weight = document.getElementById('ease_weight').value;
+    const airflow = document.getElementById('airflow').value;
 
     let desired_convection_fraction;
     switch (heating) {
@@ -108,7 +109,9 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
 
         const hit_score = device.hard_hittingness * ((speed == "on_demand" ? 2 : 1) + amount_consumed/4);
 
-        const score = bowl_score + stealth_score + heat_type_score + cost_score + battery_life_score + butane_score + convenience_score + hit_score;
+        const airflow_score = 5 * (device.airflow == airflow ? 1 : 0);
+
+        const score = bowl_score + stealth_score + heat_type_score + cost_score + battery_life_score + butane_score + convenience_score + hit_score + airflow_score;
 
         return {device: device, score: score};
     });
@@ -134,7 +137,7 @@ function makeDeviceItem(device_score) {
     const device = device_score.device;
     const score = device_score.score.toPrecision(3);
 
-    return `${score}: <a href=${device.url}>${device.name}</a>`;
+    return `${score}: ${device.name}`;
 }
 
 document.getElementById("glass_fraction").oninput = function() {
