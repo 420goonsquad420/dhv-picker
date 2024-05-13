@@ -54,7 +54,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         if (["electric"].includes(device.heat_source)){
             amended_devices.push(device.copy());
         } else if (
-             ["yes"].includes(butane_ok)
+             ["yes", "prefer"].includes(butane_ok)
           && ["torch", "both"].includes(own_torch_heater)
           && ["butane", "butane/induction"].includes(device.heat_source)
         ) {
@@ -68,7 +68,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
             amended_devices.at(-1).heat_source = "induction";
         } else {
             if (
-                ["yes", "yes_but"].includes(butane_ok)
+                ["yes", "yes_but, prefer"].includes(butane_ok)
              && ["butane", "butane/induction"].includes(device.heat_source)
             ){
                 amended_devices.push(device.copy())
@@ -140,7 +140,8 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         const bowls_per_day = bowls_per_person_per_day * participants
         const battery_life_score = ((portability == "desktop") && (device.form_factor == "desktop")) ? 0 : 1 *-(bowls_per_day / device.bowls_per_charge);
 
-        const butane_score = (["yes_but"].includes(butane_ok) && ["butane"].includes(device.heat_source)) ? -4 : 0;
+        const butane_score = (["yes_but"].includes(butane_ok) && ["butane"].includes(device.heat_source)) ? -4
+            : (["prefer"].includes(butane_ok) && ["butane"].includes(device.heat_source)) ? 4 : 0;
 
         const convenience_score = glass_frac * device.glass_friendliness + (1-glass_frac) * device.glass_free_friendliness + ease_weight * device.ease_of_use;
 
