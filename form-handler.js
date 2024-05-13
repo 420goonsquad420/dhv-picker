@@ -7,22 +7,23 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
     const participants = document.getElementById('participants').value;
     const portability = document.getElementById('portability').value;
     const stealth = document.getElementById('stealth').value;
-    let stealth_weigth;
+    let stealth_weight;
 
     switch (stealth) {
         case "invisible":
-            stealth_weigth = 5;
+            stealth_weight = 5;
             break;
         case "discreet":
-            stealth_weigth = 3;
+            stealth_weight = 3;
             break;
         case "open":
-            stealth_weigth = 0;
+            stealth_weight = 0;
             break;
     }
 
     const speed = document.getElementById('speed').value;
     const butane_ok = document.getElementById('butane_ok').value;
+    const own_torch_heater = document.getElementById('own_torch_heater').value;
     const budget = document.getElementById('budget').value*10;
     const glass_frac = document.getElementById('glass_fraction').value/10;
     const heating = document.getElementById('heating').value;
@@ -42,24 +43,54 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
             break;
     }
 
-    // Adjust the price of butane devices based on whether they will be used with a torch or an induction heater
-    const amended_devices = devices.map(device => {
-        const amended_device = device.copy();
+    // Filter and adjust the price of butane devices based on:
+    // - whether they will be used with a torch or an induction heater
+    // - whether the user already has a torch or induction heater
+    const amended_devices = devices.flatMap(device => {
+        const amended_devices = [];
 
-        if ((butane_ok == "no" || butane_ok == "yes_but_pay") && (device.heat_source == "butane/induction")) {
-            amended_device.name += " + Ispire Wand";
-            amended_device.price += 130;
-        } else if (device.heat_source != "electric") {
-            amended_device.name += " + Butane Torch";
-            amended_device.price += 5;
+        // TODO butane_ok has changed
+        if (["electric"].includes(device.heat_source)){
+            amended_devices.push(device.copy());
+        } else if (
+             ["yes"].includes(butane_ok)
+          && ["torch", "both"].includes(own_torch_heater)
+          && ["butane", "butane/induction"].includes(device.heat_source)
+        ) {
+            amended_devices.push(device.copy());
+            amended_devices.at(-1).heat_source = "butane";
+        } else if (
+             ["induction", "both"].includes(own_torch_heater)
+          && ["butane/induction"].includes(device.heat_source)
+        ) {
+            amended_devices.push(device.copy());
+            amended_devices.at(-1).heat_source = "induction";
+        } else {
+            if (
+                ["yes", "yes_but"].includes(butane_ok)
+             && ["butane", "butane/induction"].includes(device.heat_source)
+            ){
+                amended_devices.push(device.copy())
+                amended_devices.at(-1).name += " + Butane Torch";
+                amended_devices.at(-1).price += 5;
+                amended_devices.at(-1).heat_source = "butane";
+            }
+
+            if (
+                ["no", "yes_but"].includes(butane_ok)
+             && ["butane/induction"].includes(device.heat_source)
+            ){
+                amended_devices.push(device.copy())
+                amended_devices.at(-1).name += " + Ispire Wand";
+                amended_devices.at(-1).price += 130;
+                amended_devices.at(-1).heat_source = "induction";
+            }
         }
 
-        return amended_device;
+        return amended_devices;
     });
 
     const viable_devices = amended_devices
-        // Remove butane devices if user doesn't want to use torch
-        .filter(device => !((butane_ok == "no") && (device.heat_source == "butane")))
         // Remove desktops if user needs a portable
         .filter(device => !((portability == "portable") && (device.portability == "desktop")))
         // Cap to devices within budget
@@ -95,17 +126,17 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         const bowls_per_day = (amount_consumed * participants) / device.bowl_size;
 
         const bowl_score = -bowls_per_day; 
-        const stealth_score = stealth_weigth * device.stealth;
+        const stealth_score = stealth_weight * (device.stealth-5);
         const heat_type_score = 5 * (1- Math.abs(device.convection_fraction() - desired_convection_fraction));
-        const cost_score = 5 - 10*(device.price / budget); 
+        const price_score = 5 - 12*(device.price / budget); 
         const battery_life_score = -bowls_per_day / device.bowls_per_charge;
-        const butane_score = (["yes_but", "yes_but_pay"].includes(butane_ok) && device.heat_source == "butane") || (butane_ok == "yes_but" && device.heat_source == "butane/induction") ? -2 : 0;
+        const butane_score = (["yes_but"].includes(butane_ok) && ["butane"].includes(device.heat_source)) ? -4 : 0;
         const convenience_score = glass_frac * device.glass_friendliness + (1-glass_frac) * device.glass_free_friendliness + ease_weight * device.ease_of_use;
         const hit_score = speed == "on_demand" ? 2 * device.hard_hittingness : device.hard_hittingness;
 
         const airflow_score = 5 * (device.airflow == airflow ? 1 : 0);
 
-        const score = bowl_score + stealth_score + heat_type_score + cost_score + battery_life_score + butane_score + convenience_score + hit_score + airflow_score;
+        const score = bowl_score + stealth_score + heat_type_score + price_score + battery_life_score + butane_score + convenience_score + hit_score + airflow_score;
 
         return {device: device, score: score};
     });
