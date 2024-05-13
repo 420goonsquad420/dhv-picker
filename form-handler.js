@@ -29,6 +29,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
     const heating = document.getElementById('heating').value;
     const ease_weight = document.getElementById('ease_weight').value;
     const airflow = document.getElementById('airflow').value;
+    const flavour_importance = document.getElementById('flavour_importance').value;
 
     let desired_convection_fraction;
     switch (heating) {
@@ -71,8 +72,10 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
              && ["butane", "butane/induction"].includes(device.heat_source)
             ){
                 amended_devices.push(device.copy())
-                amended_devices.at(-1).name += " + Butane Torch";
-                amended_devices.at(-1).price += 5;
+                if (!["torch", "both"].includes(own_torch_heater)) {
+                    amended_devices.at(-1).name += " + Butane Torch";
+                    amended_devices.at(-1).price += 5;
+                }
                 amended_devices.at(-1).heat_source = "butane";
             }
 
@@ -81,8 +84,10 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
              && ["butane/induction"].includes(device.heat_source)
             ){
                 amended_devices.push(device.copy())
-                amended_devices.at(-1).name += " + Ispire Wand";
-                amended_devices.at(-1).price += 130;
+                if (!["induction", "both"].includes(own_torch_heater)) {
+                    amended_devices.at(-1).name += " + Ispire Wand";
+                    amended_devices.at(-1).price += 130;
+                }
                 amended_devices.at(-1).heat_source = "induction";
             }
         }
@@ -133,10 +138,11 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         const butane_score = (["yes_but"].includes(butane_ok) && ["butane"].includes(device.heat_source)) ? -4 : 0;
         const convenience_score = glass_frac * device.glass_friendliness + (1-glass_frac) * device.glass_free_friendliness + ease_weight * device.ease_of_use;
         const hit_score = speed == "on_demand" ? 2 * device.hard_hittingness : device.hard_hittingness;
+        const flavour_score = 2 * flavour_importance * (device.flavour - 3);
 
         const airflow_score = 5 * (device.airflow == airflow ? 1 : 0);
 
-        const score = bowl_score + stealth_score + heat_type_score + price_score + battery_life_score + butane_score + convenience_score + hit_score + airflow_score;
+        const score = bowl_score + stealth_score + heat_type_score + price_score + battery_life_score + butane_score + convenience_score + hit_score + airflow_score + flavour_score;
 
         return {device: device, score: score};
     });
