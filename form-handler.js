@@ -141,9 +141,11 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         const battery_life_score = ((portability == "desktop") && (device.form_factor == "desktop")) ? 0 : 1 *-(bowls_per_day / device.bowls_per_charge);
 
         const butane_score = (["yes_but"].includes(butane_ok) && ["butane"].includes(device.heat_source)) ? -4 : 0;
+
         const convenience_score = glass_frac * device.glass_friendliness + (1-glass_frac) * device.glass_free_friendliness + ease_weight * device.ease_of_use;
 
         const hit_score = device.hard_hittingness * ((speed == "on_demand" ? 2 : 1) + amount_consumed/4);
+
         const flavour_score = 1.2 * flavour_importance * (device.flavour - 3);
 
         const airflow_score = 5 * (device.airflow == airflow ? 1 : 0);
