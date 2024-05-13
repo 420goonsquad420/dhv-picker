@@ -135,7 +135,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
 
         const heat_type_score = 5 * (1 - Math.abs(device.convection_fraction() - desired_convection_fraction));
 
-        const price_score = 5 * (1 - (device.price / budget));
+        const price_score = 5 * (1 - (device.price / budget)**2);
 
         const bowls_per_day = bowls_per_person_per_day * participants
         const battery_life_score = ((portability == "desktop") && (device.form_factor == "desktop")) ? 0 : 1 *-(bowls_per_day / device.bowls_per_charge);
