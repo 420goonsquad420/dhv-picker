@@ -128,8 +128,8 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
 
     const device_suitabilities = viable_devices.map(device => {
 
-
-        const bowl_score = -0.5 * Math.max(device.bowl_size, amount_consumed) / Math.min(device.bowl_size, amount_consumed);
+        const bowls_per_person_per_day = amount_consumed / device.bowl_size;
+        const bowl_score = bowls_per_person_per_day < 1 ? 5 * bowls_per_person_per_day : -5/19 * (device.bowl_size - 1)/amount_consumed + 5;
 
         const stealth_score = stealth_weight * -(5-device.stealth);
 
@@ -137,14 +137,14 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
 
         const price_score = 5 * (1 - (device.price / budget));
 
-        const bowls_per_day = (amount_consumed * participants) / device.bowl_size;
+        const bowls_per_day = bowls_per_person_per_day * participants
         const battery_life_score = ((portability == "desktop") && (device.form_factor == "desktop")) ? 0 : 1 *-(bowls_per_day / device.bowls_per_charge);
 
         const butane_score = (["yes_but"].includes(butane_ok) && ["butane"].includes(device.heat_source)) ? -4 : 0;
         const convenience_score = glass_frac * device.glass_friendliness + (1-glass_frac) * device.glass_free_friendliness + ease_weight * device.ease_of_use;
 
         const hit_score = device.hard_hittingness * ((speed == "on_demand" ? 2 : 1) + amount_consumed/4);
-        const flavour_score = 2 * flavour_importance * (device.flavour - 3);
+        const flavour_score = 1.2 * flavour_importance * (device.flavour - 3);
 
         const airflow_score = 5 * (device.airflow == airflow ? 1 : 0);
 
