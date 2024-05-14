@@ -54,7 +54,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         if (["electric"].includes(device.heat_source)){
             amended_devices.push(device.copy());
         } else if (
-             ["yes"].includes(butane_ok)
+             ["yes", "prefer"].includes(butane_ok)
           && ["torch", "both"].includes(own_torch_heater)
           && ["butane", "butane/induction"].includes(device.heat_source)
         ) {
@@ -68,7 +68,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
             amended_devices.at(-1).heat_source = "induction";
         } else {
             if (
-                ["yes", "yes_but"].includes(butane_ok)
+                ["yes", "yes_but, prefer"].includes(butane_ok)
              && ["butane", "butane/induction"].includes(device.heat_source)
             ){
                 amended_devices.push(device.copy())
@@ -97,7 +97,7 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
 
     const viable_devices = amended_devices
         // Remove desktops if user needs a portable
-        .filter(device => !((portability == "portable") && (device.portability == "desktop")))
+        .filter(device => !((portability == "portable") && (device.form_factor == "desktop")))
         // Cap to devices within budget
         .filter(device => device.price <= budget)
         // Remove glass-only devices for users who want a handheld, and glass-incompatible devices for users who want to use glass
@@ -128,17 +128,26 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
 
     const device_suitabilities = viable_devices.map(device => {
 
-        const bowls_per_day = (amount_consumed * participants) / device.bowl_size;
+        const bowls_per_person_per_day = amount_consumed / device.bowl_size;
+        const bowl_score = bowls_per_person_per_day < 1 ? 5 * bowls_per_person_per_day : -5/19 * (device.bowl_size - 1)/amount_consumed + 5;
 
-        const bowl_score = -bowls_per_day; 
-        const stealth_score = stealth_weight * (device.stealth-5);
-        const heat_type_score = 5 * (1- Math.abs(device.convection_fraction() - desired_convection_fraction));
-        const price_score = 5 - 12*(device.price / budget); 
-        const battery_life_score = -bowls_per_day / device.bowls_per_charge;
-        const butane_score = (["yes_but"].includes(butane_ok) && ["butane"].includes(device.heat_source)) ? -4 : 0;
+        const stealth_score = stealth_weight * -(5-device.stealth);
+
+        const heat_type_score = 5 * (1 - Math.abs(device.convection_fraction() - desired_convection_fraction));
+
+        const price_score = 5 * (1 - (device.price / budget)**2);
+
+        const bowls_per_day = bowls_per_person_per_day * participants
+        const battery_life_score = ((portability == "desktop") && (device.form_factor == "desktop")) ? 0 : 1 *-(bowls_per_day / device.bowls_per_charge);
+
+        const butane_score = (["yes_but"].includes(butane_ok) && ["butane"].includes(device.heat_source)) ? -4
+            : (["prefer"].includes(butane_ok) && ["butane"].includes(device.heat_source)) ? 4 : 0;
+
         const convenience_score = glass_frac * device.glass_friendliness + (1-glass_frac) * device.glass_free_friendliness + ease_weight * device.ease_of_use;
-        const hit_score = speed == "on_demand" ? 2 * device.hard_hittingness : device.hard_hittingness;
-        const flavour_score = 2 * flavour_importance * (device.flavour - 3);
+
+        const hit_score = device.hard_hittingness * ((speed == "on_demand" ? 2 : 1) + amount_consumed/4);
+
+        const flavour_score = 1.2 * flavour_importance * (device.flavour - 3);
 
         const airflow_score = 5 * (device.airflow == airflow ? 1 : 0);
 

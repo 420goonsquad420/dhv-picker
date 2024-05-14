@@ -68,6 +68,7 @@ export class Device {
         this.heating = heating;
 
         console.assert(typeof(bowls_per_charge) === "number" && bowls_per_charge > 0, "Error: Invalid bowls_per_charge");
+        console.assert(!(form_factor == "desktop" && heat_source == "electric" && bowls_per_charge != 1000), "Desktops electrics should have '1000 bowls per charge'")
         this.bowls_per_charge = bowls_per_charge;
 
         console.assert(zero_five_scale.includes(hard_hittingness), "Error: Invalid hard_hittingness");
